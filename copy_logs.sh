@@ -12,7 +12,7 @@ TEMP_DIR="/tmp/$OrderID"
 mkdir -p "$TEMP_DIR"
 
 # Search and copy relevant log files to the temporary directory
-find "$LOG_DIR" -type f \( -name "*ORS*" -o -name "*SATS*" -o -name "*HDB*" -o -name "*FIXSELL*" -o -name "*FIXBUY*" \) -exec grep -l "$OrderID" {} \; -exec cp {} "$TEMP_DIR" \;
+find "$LOG_DIR" -type f \( -name "*log*" \) -exec grep -l "$OrderID" {} \; -exec cp {} "$TEMP_DIR" \;
 
 # Compress the folder into a tar.gz archive
 tar -czvf "/tmp/${OrderID}.tar.gz" -C "/tmp" "$OrderID"
